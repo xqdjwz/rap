@@ -2,28 +2,24 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>说唱人格测试 | 测测你骨子里最像哪位说唱歌手</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>说唱人格测试</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: #f5f5f7;
-      color: #1d1d1f;x
-      min-height: 100vh;
-    }
-    main {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px;
     }
-    .container {
+    .wrap {
       width: 100%;
       max-width: 420px;
     }
@@ -31,27 +27,27 @@
       background: white;
       border-radius: 24px;
       box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-      padding: 48px 32px;
+      padding: 40px 32px;
       text-align: center;
     }
     h1 {
       font-size: 28px;
       font-weight: 700;
-      line-height: 1.2;
       margin-bottom: 12px;
+      line-height: 1.3;
     }
     .desc {
       color: #86868b;
       font-size: 15px;
-      line-height: 1.5;
       margin-bottom: 24px;
+      line-height: 1.5;
     }
     .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       justify-content: center;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
     .tag {
       background: #f5f5f7;
@@ -59,7 +55,6 @@
       padding: 6px 12px;
       border-radius: 999px;
       font-size: 12px;
-      font-weight: 500;
     }
     .start-btn {
       width: 100%;
@@ -76,43 +71,257 @@
     .start-btn:hover {
       background: #5f4dd0;
     }
-    .start-btn:active {
-      transform: scale(0.98);
-      background: #5343b8;
-    }
     .tip {
-      margin-top: 16px;
+      margin-top: 12px;
       font-size: 12px;
       color: #c7c7cc;
     }
     .author {
-      margin-top: 20px;
+      text-align: center;
+      margin-top: 16px;
       font-size: 12px;
       color: #c7c7cc;
-      text-align: right;
-      padding-right: 8px;
+    }
+
+    .quiz-page {
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      padding: 40px 32px;
+      max-width: 420px;
+      width: 100%;
+      display: none;
+    }
+    .progress {
+      width: 100%;
+      height: 4px;
+      background: #f5f5f7;
+      border-radius: 2px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: #6c5ce7;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    .q-number {
+      font-size: 14px;
+      color: #86868b;
+      margin-bottom: 12px;
+    }
+    .q-title {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+    .option {
+      width: 100%;
+      padding: 16px;
+      background: #f5f5f7;
+      border: none;
+      border-radius: 12px;
+      text-align: left;
+      margin-bottom: 12px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .option:hover {
+      background: #e8e8ed;
+    }
+    .option.selected {
+      background: #6c5ce7;
+      color: #fff;
+    }
+
+    .result-page {
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      padding: 40px 32px;
+      max-width: 420px;
+      width: 100%;
+      display: none;
+      text-align: center;
+    }
+    .result-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .result-desc {
+      font-size: 15px;
+      color: #86868b;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    .back-btn {
+      width: 100%;
+      padding: 14px;
+      background: #6c5ce7;
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <main>
-    <div class="container">
-      <div class="card">
-        <h1>测测你骨子里<br>最像哪位说唱歌手</h1>
-        <p class="desc">30道题，拆穿你的社交习惯、发疯方式、上头模式和精神底色</p >
 
-        <div class="tags">
-          <span class="tag">15维人格分析</span>
-          <span class="tag">16种说唱人格</span>
-          <span class="tag">雷达图</span>
-          <span class="tag">精准锐评</span>
-        </div>
+<!-- 首页 -->
+<div class="wrap" id="homePage">
+  <div class="card">
+    <h1>测测你骨子里<br>最像哪位说唱高手</h1>
+    <p class="desc">30道题，拆穿你的社交习惯、发疯方式、上头模式和精神底色</p >
 
-        <button class="start-btn">开始测试</button>
-        <p class="tip">大约 3 分钟 · 无需登录 · 结果可截图分享</p >
-      </div>
-      <p class="author">作者：Luca</p >
+    <div class="tags">
+      <span class="tag">15维人格分析</span>
+      <span class="tag">16种说唱人格</span>
+      <span class="tag">雷达图</span>
+      <span class="tag">精准锐评</span>
     </div>
-  </main>
+
+    <button class="start-btn" id="startBtn">开始测试</button>
+    <p class="tip">大约 3 分钟 · 无需登录 · 结果可截图分享</p >
+  </div>
+  <p class="author">作者：Luca</p >
+</div>
+
+<!-- 答题页 -->
+<div class="quiz-page" id="quizPage">
+  <div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <p class="q-number" id="qNumber">1 / 30</p >
+  <h2 class="q-title" id="qText">题目加载中...</h2>
+  <div id="optionsContainer"></div>
+</div>
+
+<!-- 结果页 -->
+<div class="result-page" id="resultPage">
+  <h2 class="result-title" id="resultTitle">你的结果</h2>
+  <p class="result-desc" id="resultDesc">正在生成分析...</p >
+  <button class="back-btn" id="backHomeBtn">返回首页重新测试</button>
+</div>
+
+<script>
+  const homePage = document.getElementById('homePage');
+  const quizPage = document.getElementById('quizPage');
+  const resultPage = document.getElementById('resultPage');
+  const startBtn = document.getElementById('startBtn');
+  const progressBar = document.getElementById('progressBar');
+  const qNumber = document.getElementById('qNumber');
+  const qText = document.getElementById('qText');
+  const optionsContainer = document.getElementById('optionsContainer');
+  const backHomeBtn = document.getElementById('backHomeBtn');
+  const resultTitle = document.getElementById('resultTitle');
+  const resultDesc = document.getElementById('resultDesc');
+
+  // 30 题完整题库
+  const questions = [
+    { id: 1, text: "你听歌更看重什么？", options: [{ text: "A 歌词深度，有态度", value: "A" },{ text: "B 旋律氛围，有感觉", value: "B" },{ text: "C 够炸够洗脑，听着爽", value: "C" }]},
+    { id: 2, text: "社交中你更像？", options: [{ text: "A 社牛，全场焦点", value: "A" },{ text: "B 社恐，安静独处", value: "B" },{ text: "C 熟人疯，生人冷", value: "C" }]},
+    { id: 3, text: "遇到不爽的事你会？", options: [{ text: "A 直接说，不憋着", value: "A" },{ text: "B 默默忍，远离就好", value: "B" },{ text: "C 阴阳怪气暗地吐槽", value: "C" }]},
+    { id: 4, text: "你更喜欢哪种场景？", options: [{ text: "A 大型现场，万人狂欢", value: "A" },{ text: "B 小酒馆，轻松氛围", value: "B" },{ text: "C 家里躺平，自己听歌", value: "C" }]},
+    { id: 5, text: "你的穿搭风格更偏向？", options: [{ text: "A 街头宽松，随性帅", value: "A" },{ text: "B 简约干净，显气质", value: "B" },{ text: "C 个性小众，不撞款", value: "C" }]},
+    { id: 6, text: "朋友约你出门，你通常？", options: [{ text: "A 爽快答应，马上走", value: "A" },{ text: "B 犹豫半天，看心情", value: "B" },{ text: "C 能不去就不去", value: "C" }]},
+    { id: 7, text: "你做事风格更像？", options: [{ text: "A 想到就做，不拖沓", value: "A" },{ text: "B 计划周全，再行动", value: "B" },{ text: "C 随缘佛系，慢慢来", value: "C" }]},
+    { id: 8, text: "你更在意别人对你的？", options: [{ text: "A 能力评价", value: "A" },{ text: "B 人品评价", value: "B" },{ text: "C 无所谓，自己开心", value: "C" }]},
+    { id: 9, text: "压力大时你会？", options: [{ text: "A 疯狂输出，发泄情绪", value: "A" },{ text: "B 安静听歌，自我治愈", value: "B" },{ text: "C 摆烂躺平，啥也不想", value: "C" }]},
+    { id: 10, text: "你更喜欢的节奏是？", options: [{ text: "A 快节奏，炸场", value: "A" },{ text: "B 中速，舒服流畅", value: "B" },{ text: "C 慢节奏，走心", value: "C" }]},
+    { id: 11, text: "在团队里你通常是？", options: [{ text: "A 带头做主的人", value: "A" },{ text: "B 配合执行的人", value: "B" },{ text: "C 自由发挥的人", value: "C" }]},
+    { id: 12, text: "你对爱情的态度是？", options: [{ text: "A 热烈直接，敢爱敢恨", value: "A" },{ text: "B 慢热谨慎，细水长流", value: "B" },{ text: "C 可有可无，随缘就好", value: "C" }]},
+    { id: 13, text: "你说话风格更像？", options: [{ text: "A 直接干脆，不绕弯", value: "A" },{ text: "B 温和委婉，顾情绪", value: "B" },{ text: "C 幽默搞笑，爱吐槽", value: "C" }]},
+    { id: 14, text: "你更喜欢的音乐氛围是？", options: [{ text: "A 力量感，攻击性强", value: "A" },{ text: "B 氛围感，沉浸舒服", value: "B" },{ text: "C 轻松感，快乐上头", value: "C" }]},
+    { id: 15, text: "遇到选择困难时你会？", options: [{ text: "A 凭直觉快速决定", value: "A" },{ text: "B 反复权衡再选", value: "B" },{ text: "C 拖延到最后再说", value: "C" }]},
+    { id: 16, text: "你更擅长？", options: [{ text: "A 表达自己，输出观点", value: "A" },{ text: "B 倾听别人，安抚情绪", value: "B" },{ text: "C 独自消化，不麻烦人", value: "C" }]},
+    { id: 17, text: "你对未来的态度是？", options: [{ text: "A 野心满满，目标明确", value: "A" },{ text: "B 稳步前进，踏实生活", value: "B" },{ text: "C 活在当下，开心最重要", value: "C" }]},
+    { id: 18, text: "你更喜欢的天气是？", options: [{ text: "A 晴天，阳光热烈", value: "A" },{ text: "B 阴天，温柔舒服", value: "B" },{ text: "C 雨夜，安静治愈", value: "C" }]},
+    { id: 19, text: "你更像哪种玩家？", options: [{ text: "A 技术流，追求极致", value: "A" },{ text: "B 氛围流，享受过程", value: "B" },{ text: "C 娱乐流，开心就好", value: "C" }]},
+    { id: 20, text: "你生气时的表现是？", options: [{ text: "A 直接爆发，毫不掩饰", value: "A" },{ text: "B 表面平静，内心不爽", value: "B" },{ text: "C 冷处理，谁也不理", value: "C" }]},
+    { id: 21, text: "你更喜欢的城市氛围是？", options: [{ text: "A 繁华热闹，节奏快", value: "A" },{ text: "B 文艺安静，有格调", value: "B" },{ text: "C 轻松慵懒，慢生活", value: "C" }]},
+    { id: 22, text: "你对规则的态度是？", options: [{ text: "A 打破规则，做自己", value: "A" },{ text: "B 遵守规则，守底线", value: "B" },{ text: "C 看情况，灵活处理", value: "C" }]},
+    { id: 23, text: "你更喜欢的食物口味是？", options: [{ text: "A 重口味，刺激够味", value: "A" },{ text: "B 清淡口，健康原味", value: "B" },{ text: "C 甜口，治愈开心", value: "C" }]},
+    { id: 24, text: "你熬夜通常在干嘛？", options: [{ text: "A 搞事业/搞创作", value: "A" },{ text: "B 刷视频/听歌放松", value: "B" },{ text: "C 胡思乱想内耗", value: "C" }]},
+    { id: 25, text: "你更吸引别人的点是？", options: [{ text: "A 气场强大，有魅力", value: "A" },{ text: "B 温柔细腻，很靠谱", value: "B" },{ text: "C 幽默有趣，不无聊", value: "C" }]},
+    { id: 26, text: "你处理情绪的方式是？", options: [{ text: "A 直接释放，不压抑", value: "A" },{ text: "B 自我消化，慢慢平复", value: "B" },{ text: "C 转移注意力，忘掉", value: "C" }]},
+    { id: 27, text: "你更喜欢的音乐主题是？", options: [{ text: "A 梦想奋斗，搞钱变强", value: "A" },{ text: "B 爱情故事，情感细腻", value: "B" },{ text: "C 快乐自由，潇洒生活", value: "C" }]},
+    { id: 28, text: "你对朋友圈的态度是？", options: [{ text: "A 爱分享，记录生活", value: "A" },{ text: "B 偶尔发，看状态", value: "B" },{ text: "C 几乎不发，只看不发", value: "C" }]},
+    { id: 29, text: "你更适合的舞台是？", options: [{ text: "A 聚光灯下，万众瞩目", value: "A" },{ text: "B 小圈子里，自在表达", value: "B" },{ text: "C 幕后创作，不露面", value: "C" }]},
+    { id: 30, text: "一句话形容你：", options: [{ text: "A 野心藏不住，气场全开", value: "A" },{ text: "B 温柔有力量，内心强大", value: "B" },{ text: "C 随性又自由，快乐至上", value: "C" }]}
+  ];
+
+  let currentIndex = 0;
+  const answers = [];
+  const total = questions.length;
+
+  startBtn.onclick = () => {
+    homePage.style.display = 'none';
+    quizPage.style.display = 'block';
+    render();
+  };
+
+  function render() {
+    const q = questions[currentIndex];
+    qNumber.textContent = `${currentIndex + 1} / ${total}`;
+    qText.textContent = q.text;
+    progressBar.style.width = ((currentIndex + 1) / total * 100) + '%';
+
+    optionsContainer.innerHTML = q.options.map(o => `
+      <button class="option" data-val="${o.value}">${o.text}</button>
+    `).join('');
+
+    document.querySelectorAll('.option').forEach(b => {
+      b.onclick = function() {
+        document.querySelectorAll('.option').forEach(x => x.classList.remove('selected'));
+        this.classList.add('selected');
+        answers[currentIndex] = this.dataset.val;
+
+        // 选完自动下一题（核心）
+        setTimeout(() => {
+          if (currentIndex < total - 1) {
+            currentIndex++;
+            render();
+          } else {
+            showResult();
+          }
+        }, 200);
+      };
+    });
+  }
+
+  function showResult() {
+    quizPage.style.display = 'none';
+    resultPage.style.display = 'block';
+    const a = answers.filter(i => i === 'A').length;
+    const b = answers.filter(i => i === 'B').length;
+    const c = answers.filter(i => i === 'C').length;
+
+    let title, desc;
+    if (a >= b && a >= c) {
+      title = "攻击性实力派 · 野心拉满";
+      desc = "你骨子里是敢闯敢拼的狠角色，像顶级技术流Rapper一样，用实力说话，气场全开，目标明确，从不妥协。";
+    } else if (b >= a && b >= c) {
+      title = "温柔氛围派 · 内心强大";
+      desc = "你细腻又温柔，情绪稳定内心强大，像旋律Rapper一样，治愈又有力量，不张扬但让人忍不住靠近。";
+    } else {
+      title = "快乐自由派 · 随性洒脱";
+      desc = "你天生乐观洒脱，热爱自由，像洗脑旋律Rapper一样，轻松快乐至上，怎么舒服怎么来，从不内耗。";
+    }
+    resultTitle.textContent = title;
+    resultDesc.textContent = desc;
+  }
+
+  backHomeBtn.onclick = () => {
+    resultPage.style.display = 'none';
+    homePage.style.display = 'block';
+    currentIndex = 0;
+    answers.length = 0;
+  };
+</script>
 </body>
 </html>
